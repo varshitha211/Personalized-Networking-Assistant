@@ -1,87 +1,93 @@
 # Phase 6: Project Testing
 
-This folder contains the testing details and validation process for the **Personalized Networking Assistant** project.
+This folder contains the testing process and validation carried out for the **Personalized Networking Assistant**.
 
 ---
 
-# Project Testing
+# 1. Testing Overview
 
-## Objective
-
-The objective of testing is to ensure that the Personalized Networking Assistant functions correctly, provides accurate recommendations, and delivers a smooth user experience.
+Testing was performed to verify that the application modules function correctly, the backend APIs return expected responses, and the AI-powered services work as intended. Unit testing was implemented using **PyTest**.
 
 ---
 
-# Testing Types Performed
+# 2. Testing Environment
 
-## Functional Testing
-
-Verified that all modules perform their intended functions correctly.
-
-### Modules Tested
-
-- User Authentication
-- Profile Management
-- Topic Generator
-- Event Analyzer
-- Fact Checker
-- History Logger
-- Feedback Logger
+| Component | Technology |
+|-----------|------------|
+| Testing Framework | PyTest |
+| Backend | FastAPI |
+| Frontend | Streamlit |
+| Database | SQLite |
+| ORM | SQLAlchemy |
 
 ---
 
-## Integration Testing
+# 3. Test Modules
 
-Verified communication between:
+The project contains the following test files:
 
-- Frontend and Backend
-- Backend and Database
-- Backend and AI Modules
+- `test_event_analyzer.py`
+- `test_topic_generator.py`
+- `test_fact_checker.py`
+- `test_routes.py`
 
----
+A common configuration is provided through:
 
-## User Interface Testing
-
-Verified:
-
-- Responsive layout
-- Navigation
-- Forms
-- Buttons
-- Input validation
+- `conftest.py`
 
 ---
 
-## Performance Testing
+# 4. Modules Tested
 
-Verified:
+## Event Analyzer
 
-- Fast response time
-- Efficient request handling
-- Stable application performance
+Verified that the Event Analyzer correctly processes event descriptions and extracts relevant themes.
 
----
-
-## Test Cases
-
-| Test Case | Expected Result | Status |
-|------------|-----------------|--------|
-| User Registration | User account created successfully | ✅ Pass |
-| User Login | Login successful | ✅ Pass |
-| Topic Generation | Personalized topics generated | ✅ Pass |
-| Event Analysis | Relevant networking events displayed | ✅ Pass |
-| Fact Checking | Correct validation provided | ✅ Pass |
-| History Logging | Interaction saved successfully | ✅ Pass |
-| Feedback Submission | Feedback stored successfully | ✅ Pass |
+**Status:** ✅ Passed
 
 ---
 
-# Testing Outcome
+## Topic Generator
 
-The application successfully passed functional and integration testing. All core modules performed as expected, and the system demonstrated stable performance with a user-friendly interface.
+Verified that GPT-2 based conversation starters are generated successfully for the provided inputs.
+
+**Status:** ✅ Passed
 
 ---
 
-# Conclusion
+## Fact Checker
 
-The Personalized Networking Assistant is functioning as intended and is ready for deployment and demonstration.
+Verified that fact-check requests return information retrieved through the Wikipedia API.
+
+**Status:** ✅ Passed
+
+---
+
+## API Routes
+
+Verified that backend API endpoints respond correctly and return valid responses.
+
+**Status:** ✅ Passed
+
+---
+
+# 5. Test Summary
+
+| Module | Result |
+|---------|--------|
+| Event Analyzer | ✅ Passed |
+| Topic Generator | ✅ Passed |
+| Fact Checker | ✅ Passed |
+| API Routes | ✅ Passed |
+
+---
+
+# 6. Testing Outcome
+
+The testing process confirmed that the major backend services operate correctly and that the APIs integrate successfully with the application components. The project demonstrates stable functionality for conversation generation, event analysis, fact verification, and route handling.
+
+---
+
+# 7. Conclusion
+
+The Personalized Networking Assistant successfully passed the implemented unit tests using PyTest. The tested modules behaved as expected, providing confidence in the application's functionality and readiness for deployment and demonstration.
