@@ -1,101 +1,117 @@
 # Phase 2: Requirement Analysis
 
-This folder contains the requirement analysis for the **Personalized Networking Assistant** project.
+This folder contains the requirement analysis, technology stack selection, customer journey mapping, and system requirements for the **Personalized Networking Assistant – AI-Powered Professional Networking Platform**.
 
 ---
 
-# Requirement Analysis
+# 1. Technology Stack
 
-## Introduction
+The following technologies were selected for developing the Personalized Networking Assistant based on scalability, ease of development, and AI integration capabilities.
 
-The Personalized Networking Assistant is designed to help students and professionals build meaningful professional connections using AI-powered recommendations. The system assists users by suggesting conversation topics, analyzing networking events, fact-checking information, and maintaining networking history for future reference.
+| Technology | Purpose |
+|------------|---------|
+| **HTML5** | Structure and layout of web pages |
+| **CSS3** | Responsive styling and user interface |
+| **JavaScript** | Client-side interactivity |
+| **Python** | Backend programming language |
+| **Flask** | Web framework for handling requests and routing |
+| **SQLite** | Database for storing user information, interaction history, and feedback |
+| **Git & GitHub** | Version control and project collaboration |
 
 ---
 
-## Functional Requirements
+# 2. Customer Journey Map
+
+The following customer journey illustrates how a typical user interacts with the application.
+
+| Stage | User Activity | System Response |
+|-------|---------------|----------------|
+| Discover | User visits the platform | Home page is displayed |
+| Register/Login | User creates an account or logs in | User authentication is completed |
+| Profile Setup | User enters interests and career preferences | User profile is stored |
+| AI Assistance | User requests networking recommendations | AI generates personalized conversation topics and suggestions |
+| Event Analysis | User explores networking events | Relevant events are displayed |
+| Fact Verification | User verifies information | Fact Checker returns validated results |
+| History | User reviews previous interactions | Networking history is retrieved |
+| Feedback | User submits feedback | Feedback is stored for future improvements |
+
+---
+
+# 3. Functional Requirements
 
 The system shall allow users to:
 
 - Register and log in securely.
-- Manage their professional profile.
-- Generate personalized networking conversation topics.
-- Analyze networking events and recommend relevant opportunities.
-- Fact-check information shared during conversations.
-- Store and retrieve networking history.
-- Collect user feedback to improve recommendations.
+- Create and update professional profiles.
+- Generate AI-powered networking conversation topics.
+- Analyze networking events.
+- Verify information using the Fact Checker.
+- Store networking interaction history.
+- Submit feedback for continuous improvement.
 
 ---
 
-## Non-Functional Requirements
+# 4. Non-Functional Requirements
 
 ### Performance
-
-- The system should provide responses with minimal delay.
-- The application should efficiently process multiple user requests.
+- Generate responses with minimal delay.
+- Handle multiple user requests efficiently.
 
 ### Reliability
-
-- User information and networking history should be stored securely.
-- The system should provide consistent recommendations.
-
-### Scalability
-
-- The platform should support an increasing number of users and networking events.
+- Ensure consistent AI recommendations.
+- Maintain accurate user records.
 
 ### Security
-
-- User authentication should be implemented.
-- Sensitive user data should be protected.
+- Secure user authentication.
+- Protect sensitive user information.
 
 ### Usability
+- Provide a simple and intuitive user interface.
+- Ensure easy navigation across all modules.
 
-- The interface should be simple and intuitive.
-- Users should easily navigate between different modules.
-
----
-
-# Software Requirements
-
-- Python
-- Flask
-- HTML
-- CSS
-- JavaScript
-- SQLite
-- Git & GitHub
+### Scalability
+- Support future feature additions and increased user traffic.
 
 ---
 
-# Hardware Requirements
+# 5. System Modules
 
-## Minimum
-
-- Processor: Intel Core i3
-- RAM: 4 GB
-- Storage: 20 GB
-- Internet Connection
-
-## Recommended
-
-- Processor: Intel Core i5 or above
-- RAM: 8 GB or above
-- SSD Storage
-- Stable Internet Connection
-
----
-
-# System Modules
+The application consists of the following major modules:
 
 - User Authentication
 - Profile Management
 - Topic Generator
 - Event Analyzer
 - Fact Checker
-- Networking History
-- Feedback Management
+- History Logger
+- Feedback Logger
 
 ---
 
-# Expected Outcome
+# 6. Data Flow
 
-The Personalized Networking Assistant enables users to network more effectively by providing AI-powered conversation assistance, personalized recommendations, networking history, and event analysis, making professional networking easier and more productive.
+```
+User
+   │
+   ▼
+Frontend Interface
+   │
+   ▼
+Flask Backend
+   │
+   ├──────────────┐
+   ▼              ▼
+AI Modules     SQLite Database
+   │              │
+   └──────┬───────┘
+          ▼
+ Generated Response
+          ▼
+       User Interface
+```
+
+---
+
+# 7. Expected Outcome
+
+The Personalized Networking Assistant aims to simplify professional networking by providing AI-powered recommendations, personalized conversation support, networking event analysis, fact verification, and interaction history management. The system enables users to build stronger professional relationships while improving networking efficiency and confidence.
