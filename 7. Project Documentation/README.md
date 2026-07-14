@@ -1,101 +1,108 @@
 # Phase 7: Project Documentation
 
-This folder contains the complete documentation for the **Personalized Networking Assistant** project.
+This folder contains the technical documentation for the **Personalized Networking Assistant** project.
 
 ---
 
-# Project Documentation
+# 1. Project Summary
 
-## Project Title
+The Personalized Networking Assistant is an AI-powered web application that assists users in preparing for professional and social networking events. The application analyzes event descriptions, generates personalized conversation starters, verifies factual information, and maintains networking history for future reference.
 
-**Personalized Networking Assistant**
-
----
-
-## Project Description
-
-The Personalized Networking Assistant is an AI-powered web application that helps students and professionals build meaningful professional connections. It provides personalized networking recommendations, conversation topic suggestions, networking event analysis, fact-checking support, and interaction history management.
+The system combines modern AI models with a lightweight web architecture to provide an interactive networking assistant.
 
 ---
 
-# Features
+# 2. Project Features
 
-- User Authentication
-- Personalized Conversation Topic Generation
-- Networking Event Analysis
-- Fact Checking
-- Networking History Management
-- Feedback Collection
-- Responsive User Interface
+The application provides the following features:
 
----
-
-# Technology Stack
-
-## Frontend
-- HTML
-- CSS
-- JavaScript
-
-## Backend
-- Python
-- Flask
-
-## Database
-- SQLite
-
-## Version Control
-- Git
-- GitHub
+- AI-powered conversation starter generation
+- Event theme extraction
+- Fact checking using Wikipedia
+- Networking session history
+- Feedback collection
+- REST API-based backend
+- Interactive Streamlit user interface
 
 ---
 
-# Project Structure
+# 3. System Architecture
+
+The application consists of four major components:
+
+- Streamlit Frontend
+- FastAPI Backend
+- AI Service Layer
+- SQLite Database
+
+The frontend communicates with the backend through REST APIs, while the backend processes requests using dedicated AI service modules and stores data using SQLAlchemy with SQLite.
+
+---
+
+# 4. Technologies Used
+
+| Category | Technology |
+|----------|------------|
+| Programming Language | Python |
+| Backend Framework | FastAPI |
+| Frontend | Streamlit |
+| Database | SQLite |
+| ORM | SQLAlchemy |
+| AI Models | DistilBERT, GPT-2 |
+| Fact Verification | Wikipedia API |
+| Testing | PyTest |
+| Version Control | Git & GitHub |
+
+---
+
+# 5. Project Modules
+
+The application is divided into the following modules:
+
+- Event Analyzer
+- Topic Generator
+- Fact Checker
+- History Logger
+- Feedback Logger
+
+Each module performs a dedicated task and communicates with the backend through well-defined interfaces.
+
+---
+
+# 6. Folder Structure
 
 ```
-Personalized-Networking-Assistant
-│
-├── backend
-├── frontend
-├── tests
-├── requirements.txt
-├── README.md
-├── 1. Brainstorming & Ideation
-├── 2. Requirement Analysis
-├── 3. Project Design
-├── 4. Project Planning
-├── 5. Project Development
-├── 6. Project Testing
-└── 7. Project Documentation
+backend/
+frontend/
+tests/
+requirements.txt
+README.md
 ```
 
 ---
 
-# Installation
+# 7. Installation
 
-1. Clone the repository.
-2. Install the required dependencies.
+### Install the required dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-3. Run the Flask application.
+### Start the backend server
 
-```
-python app.py
+```bash
+python -m uvicorn backend.main:app --reload
 ```
 
-4. Open the application in your browser.
+### Launch the frontend
+
+```bash
+streamlit run frontend/app.py
+```
 
 ---
 
-# Project Outcome
+# 8. Documentation Outcome
 
-The Personalized Networking Assistant successfully provides AI-powered networking assistance by helping users discover networking opportunities, generate conversation topics, analyze networking events, verify information, and maintain networking history.
-
----
-
-# Conclusion
-
-The project demonstrates how AI can enhance professional networking by making interactions more personalized, informative, and efficient.
+The project documentation provides a complete overview of the application architecture, implementation, technologies, modules, and deployment process. It serves as a reference for understanding, maintaining, and extending the Personalized Networking Assistant.
