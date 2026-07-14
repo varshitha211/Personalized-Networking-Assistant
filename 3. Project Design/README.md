@@ -1,97 +1,165 @@
 # Phase 3: Project Design
 
-This folder contains the design artifacts and architecture of the **Personalized Networking Assistant** project.
+This folder contains the system architecture, data model, module design, and overall design of the **Personalized Networking Assistant**.
 
 ---
 
-# System Architecture
+# 1. System Architecture
 
-The Personalized Networking Assistant follows a client-server architecture where users interact with a web interface. Requests are processed by the backend, which communicates with AI modules and the database to provide personalized networking assistance.
+The Personalized Networking Assistant follows a modular architecture consisting of a Streamlit frontend, a FastAPI backend, AI service modules, and a SQLite database.
 
 ```
-+----------------------+
-|      Frontend        |
-| HTML | CSS | JS      |
-+----------+-----------+
-           |
-           |
-+----------v-----------+
-|      Flask Server    |
-+----------+-----------+
-           |
-+----------+-----------+
-|   AI Processing      |
-|----------------------|
-| Topic Generator      |
-| Event Analyzer       |
-| Fact Checker         |
-| History Logger       |
-| Feedback Logger      |
-+----------+-----------+
-           |
-+----------v-----------+
-|      Database        |
-+----------------------+
+                    +----------------------+
+                    |      Streamlit UI    |
+                    |      frontend/app.py |
+                    +----------+-----------+
+                               |
+                               |
+                               v
+                    +----------------------+
+                    |     FastAPI Backend  |
+                    |    backend/main.py   |
+                    +----------+-----------+
+                               |
+        +-----------+----------+-----------+-----------+-----------+
+        |           |                      |           |           |
+        v           v                      v           v           v
+Event Analyzer Topic Generator Fact Checker History Logger Feedback Logger
+ (DistilBERT)       (GPT-2)      (Wikipedia)     (SQLite)      (SQLite)
+                               |
+                               |
+                               v
+                    +----------------------+
+                    |      SQLite DB       |
+                    |    SQLAlchemy ORM    |
+                    +----------------------+
 ```
 
 ---
 
-# Design Components
+# 2. Backend Design
 
-## Frontend
+The backend is implemented using **FastAPI** and follows a layered architecture.
 
-- User-friendly interface
-- Responsive web pages
-- Forms for user interaction
+```
+backend/
 
-## Backend
-
-- Flask application
-- REST endpoints
-- Request handling
-
-## AI Modules
-
-- Topic Generator
-- Event Analyzer
-- Fact Checker
-- History Logger
-- Feedback Logger
-
-## Database
-
-- Stores user details
-- Conversation history
-- Feedback records
+├── main.py
+├── database.py
+├── models.py
+├── schemas.py
+├── services/
+│   ├── event_analyzer.py
+│   ├── topic_generator.py
+│   ├── fact_checker.py
+│   ├── history_logger.py
+│   └── feedback_logger.py
+└── routes/
+    ├── sessions.py
+    ├── starters.py
+    ├── factcheck.py
+    └── history.py
+```
 
 ---
 
-# User Flow
+# 3. Frontend Design
 
-1. User logs into the system.
-2. User enters networking preferences.
-3. AI processes the request.
-4. Personalized recommendations are generated.
-5. User interacts with suggested topics and networking events.
-6. Conversation history is saved.
-7. Feedback is collected for future improvements.
+The frontend is developed using **Streamlit**.
 
----
+The application provides four major screens:
 
-# Design Goals
+- Generate Starters
+- Fact Check
+- History
+- Feedback History
 
-- Simple architecture
-- Modular implementation
-- Easy maintenance
-- Scalable components
-- Secure user interactions
+The frontend communicates with the FastAPI backend through REST API endpoints.
 
 ---
 
-# Advantages of the Design
+# 4. AI Module Design
 
-- Modular AI services
-- Easy integration of new features
-- Efficient data management
-- Better user experience
-- Maintainable codebase
+## Event Analyzer
+
+Uses **DistilBERT** zero-shot classification to extract themes from the event description.
+
+---
+
+## Topic Generator
+
+Uses **GPT-2** to generate context-aware networking conversation starters based on the extracted themes and user interests.
+
+---
+
+## Fact Checker
+
+Uses the **Wikipedia API** to verify user queries and return summarized factual information.
+
+---
+
+## History Logger
+
+Stores networking sessions and generated conversation starters in the SQLite database.
+
+---
+
+## Feedback Logger
+
+Stores user feedback (thumbs up/down) for generated conversation starters.
+
+---
+
+# 5. Database Design
+
+The application uses **SQLite** with **SQLAlchemy ORM**.
+
+### Database Entities
+
+- UserProfile
+- EventContext
+- NetworkingSession
+- GeneratedStarter
+- WikipediaFactCheck
+- LogEntry
+
+---
+
+# 6. Entity Relationship
+
+```
+User Profile (1)
+        |
+        |
+        |------< Networking Session (M) >------ Event Context
+                      |
+          -----------------------------
+          |            |             |
+          |            |             |
+Generated Starter  Wikipedia Fact Check  Log Entry
+```
+
+---
+
+# 7. API Design
+
+The backend exposes REST APIs for:
+
+- Conversation Starter Generation
+- Feedback Submission
+- Session Management
+- Fact Checking
+- History Retrieval
+
+These APIs enable seamless communication between the Streamlit frontend and FastAPI backend.
+
+---
+
+# 8. Design Advantages
+
+- Modular architecture
+- Separation of frontend and backend
+- AI services isolated into independent modules
+- Easy maintenance and scalability
+- Efficient database management using SQLAlchemy
+- REST-based communication between components
