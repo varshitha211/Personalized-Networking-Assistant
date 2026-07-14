@@ -1,117 +1,122 @@
 # Phase 2: Requirement Analysis
 
-This folder contains the requirement analysis, technology stack selection, customer journey mapping, and system requirements for the **Personalized Networking Assistant – AI-Powered Professional Networking Platform**.
+This folder contains the requirement analysis, technology selection, system requirements, and workflow for the **Personalized Networking Assistant**.
 
 ---
 
-# 1. Technology Stack
+# 1. Project Overview
 
-The following technologies were selected for developing the Personalized Networking Assistant based on scalability, ease of development, and AI integration capabilities.
+The Personalized Networking Assistant is an AI-powered web application that generates personalized conversation starters for professional and social networking events. The system analyzes event descriptions using DistilBERT, generates context-aware conversation starters using GPT-2, verifies information through the Wikipedia API, and stores networking sessions for future reference.
+
+---
+
+# 2. Technology Stack
+
+The following technologies were selected for developing the application.
 
 | Technology | Purpose |
 |------------|---------|
-| **HTML5** | Structure and layout of web pages |
-| **CSS3** | Responsive styling and user interface |
-| **JavaScript** | Client-side interactivity |
 | **Python** | Backend programming language |
-| **Flask** | Web framework for handling requests and routing |
-| **SQLite** | Database for storing user information, interaction history, and feedback |
-| **Git & GitHub** | Version control and project collaboration |
-
----
-
-# 2. Customer Journey Map
-
-The following customer journey illustrates how a typical user interacts with the application.
-
-| Stage | User Activity | System Response |
-|-------|---------------|----------------|
-| Discover | User visits the platform | Home page is displayed |
-| Register/Login | User creates an account or logs in | User authentication is completed |
-| Profile Setup | User enters interests and career preferences | User profile is stored |
-| AI Assistance | User requests networking recommendations | AI generates personalized conversation topics and suggestions |
-| Event Analysis | User explores networking events | Relevant events are displayed |
-| Fact Verification | User verifies information | Fact Checker returns validated results |
-| History | User reviews previous interactions | Networking history is retrieved |
-| Feedback | User submits feedback | Feedback is stored for future improvements |
+| **FastAPI** | REST API development |
+| **Streamlit** | Frontend user interface |
+| **SQLAlchemy** | Database ORM |
+| **SQLite** | Local database storage |
+| **DistilBERT** | Event theme extraction |
+| **GPT-2** | AI conversation starter generation |
+| **Wikipedia API** | Fact verification |
+| **PyTest** | Unit testing |
+| **Git & GitHub** | Version control |
 
 ---
 
 # 3. Functional Requirements
 
-The system shall allow users to:
+The system shall provide the following functionalities:
 
-- Register and log in securely.
-- Create and update professional profiles.
-- Generate AI-powered networking conversation topics.
-- Analyze networking events.
-- Verify information using the Fact Checker.
-- Store networking interaction history.
-- Submit feedback for continuous improvement.
+- Generate personalized conversation starters.
+- Analyze networking event descriptions.
+- Verify facts using Wikipedia.
+- Store networking sessions.
+- Record user feedback.
+- Display previous networking history.
+- Expose REST APIs for frontend communication.
 
 ---
 
 # 4. Non-Functional Requirements
 
 ### Performance
-- Generate responses with minimal delay.
-- Handle multiple user requests efficiently.
+
+- Generate AI responses efficiently.
+- Support smooth interaction between frontend and backend.
 
 ### Reliability
-- Ensure consistent AI recommendations.
-- Maintain accurate user records.
+
+- Store networking history consistently.
+- Maintain accurate fact-checking results.
 
 ### Security
-- Secure user authentication.
-- Protect sensitive user information.
 
-### Usability
-- Provide a simple and intuitive user interface.
-- Ensure easy navigation across all modules.
+- Secure API communication.
+- Maintain database integrity.
 
 ### Scalability
-- Support future feature additions and increased user traffic.
+
+- Support additional AI models and future enhancements.
+
+### Usability
+
+- Provide a simple Streamlit interface.
+- Easy navigation across application screens.
 
 ---
 
-# 5. System Modules
+# 5. System Workflow
 
-The application consists of the following major modules:
-
-- User Authentication
-- Profile Management
-- Topic Generator
-- Event Analyzer
-- Fact Checker
-- History Logger
-- Feedback Logger
+1. User enters an event description and personal interests.
+2. DistilBERT extracts themes from the event description.
+3. GPT-2 generates personalized conversation starters.
+4. Generated starters are displayed in the Streamlit interface.
+5. Users provide thumbs up/down feedback.
+6. Sessions and feedback are stored in SQLite.
+7. Users can review previous sessions and perform fact checking through the Wikipedia API.
 
 ---
 
-# 6. Data Flow
+# 6. Software Requirements
 
-```
-User
-   │
-   ▼
-Frontend Interface
-   │
-   ▼
-Flask Backend
-   │
-   ├──────────────┐
-   ▼              ▼
-AI Modules     SQLite Database
-   │              │
-   └──────┬───────┘
-          ▼
- Generated Response
-          ▼
-       User Interface
-```
+- Python
+- FastAPI
+- Streamlit
+- SQLAlchemy
+- SQLite
+- DistilBERT
+- GPT-2
+- Wikipedia API
+- PyTest
+- Git
+- GitHub
 
 ---
 
-# 7. Expected Outcome
+# 7. Hardware Requirements
 
-The Personalized Networking Assistant aims to simplify professional networking by providing AI-powered recommendations, personalized conversation support, networking event analysis, fact verification, and interaction history management. The system enables users to build stronger professional relationships while improving networking efficiency and confidence.
+## Minimum
+
+- Intel Core i3 Processor
+- 4 GB RAM
+- 10 GB Free Storage
+- Internet Connection
+
+## Recommended
+
+- Intel Core i5 or above
+- 8 GB RAM
+- SSD Storage
+- Stable Internet Connection
+
+---
+
+# 8. Expected Outcome
+
+The Personalized Networking Assistant enables users to prepare for networking events by generating context-aware conversation starters, verifying information through Wikipedia, storing networking sessions, and collecting feedback for continuous improvement.
